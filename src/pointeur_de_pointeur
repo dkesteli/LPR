@@ -1,0 +1,14 @@
+/*
+	pointeur_de_pointeur.c
+	author : Denis Kestelier
+*/
+
+#include "stdio.h"
+#include "stdlib.h"
+#include "string.h"
+
+
+void main(int argc, char ** argv) {
+
+	exit(0);
+}
