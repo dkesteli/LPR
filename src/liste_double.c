@@ -94,7 +94,7 @@ struct liste *ajouterEnFin(struct liste *pliste) {
 struct liste *supprimerEnTete(struct liste *pliste) {
 	struct liste *tmp = pliste;
 	if(pliste == NULL) {
-		fprintf(stderr, "Erreur : liste vide!");
+		fprintf(stderr, "Erreur : liste vide!\n");
 		return NULL;
 	}
 	pliste = tmp->next;
@@ -105,7 +105,7 @@ struct liste *supprimerEnTete(struct liste *pliste) {
 struct liste *supprimerEnFin(struct liste *pliste) {
 	struct liste *tmp = pliste;
 	if(pliste == NULL) {
-		fprintf(stderr, "Erreur : liste vide!");
+		fprintf(stderr, "Erreur : liste vide!\n");
 		return NULL;
 	}
 	while(tmp->next != NULL) {
