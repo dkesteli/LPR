@@ -30,7 +30,7 @@ void main(int argc, char **argv) {
 		switch(c) {
 			case 'A' :
 				if(nbCheque < 25) {
-					remplir(&vCheque[nbCheque],nbCheque+1);
+					remplir(vCheque+nbCheque,nbCheque+1); /*&vCheque[nbCheque]*/
 					nbCheque++;
 				} else {
 					printf("Impossible d'ajouter de nouveaux cheques!");
@@ -39,7 +39,7 @@ void main(int argc, char **argv) {
 			case 'V' : 
 				if(nbCheque != 0) {
 					for(i = 0; i < nbCheque; i++) {
-						affiche(vCheque[i]);
+						affiche(*(vCheque+i)); /*vCheque[i]*/
 					}
 				} else {
 					printf("Pas de cheque encode!\n");

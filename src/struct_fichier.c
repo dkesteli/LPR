@@ -25,6 +25,7 @@ void main(int argc, char **argv) {
 
 	FILE *outfile;
 	struct cheque input;
+	/*static struct cheque vch[50]*/
 	char c, cClient;
 	int i,numClient;
 	if(argc != 2) {
@@ -32,7 +33,7 @@ void main(int argc, char **argv) {
 		exit(1);
 	}
 
-	if((outfile = fopen(*(argv+1),"r+b")) == NULL) {
+	if((outfile = fopen(*(argv+1),"r+w")) == NULL) {
 		erreur(*(argv+1));
 		exit(3);
 	}
@@ -47,8 +48,11 @@ void main(int argc, char **argv) {
 		fwrite(&input,sizeof(struct cheque),1,outfile);
 	}
 	/*fin init*/
+	/*vcheque static
+	fwrite(vch,sizeof(struct cheque),50,outfile);
+	*/
 	printf("Entrez un numero de client: ");
-	while((cClient = getche()) != '0') {
+	while(((cClient = getche()) >= '1') && (cClient <= '5')) {
 		numClient = cClient - 48;
 		putchar('\n');
 		menu();

@@ -68,7 +68,7 @@ struct liste *nouvelElement() {
 	return new;
 }
 
-struct liste *ajouterEnTete(struct liste *pliste) {
+struct liste *ajouterEnTete(struct liste *pli ste) {
 	struct liste *new;
 	new = nouvelElement();
 	new->next = pliste;
