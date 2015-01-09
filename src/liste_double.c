@@ -25,7 +25,6 @@ struct liste *ajouterEnFin(struct liste *pliste);
 struct liste *supprimerEnTete(struct liste *pliste);
 struct liste *supprimerEnFin(struct liste *pliste);
 void afficherListe(struct liste *pliste);
-void insFin(struct liste *pliste);
 char menu();
  
 int main(int argc, char **argv) {
@@ -50,9 +49,6 @@ int main(int argc, char **argv) {
 			case '5':
 				afficherListe(liste);
 				break;
-			case '6':
-				insFin(liste);
-				break;
 			default:
 				printf("Mauvaise option!\n");
 		}
@@ -72,7 +68,7 @@ struct liste *nouvelElement() {
 	return new;
 }
 
-struct liste *ajouterEnTete(struct liste *pli ste) {
+struct liste *ajouterEnTete(struct liste *pliste) {
 	struct liste *new;
 	new = nouvelElement();
 	new->next = pliste;
@@ -133,29 +129,6 @@ void afficherListe(struct liste *pliste) {
 	}
 }
 
-void insDeb(struct liste *pliste) {
-	struct liste *tmp = pliste, *new;
-	new = nouvelElement();
-	new->next = pliste;
-	pliste = new;
-}
-
-void insFin(struct liste *pliste) {
-	struct liste *tmp = pliste, *new = NULL;
-	if(pliste == NULL) {
-		printf("i'm here\n");
-		insDeb(pliste);
-		afficherListe(pliste);
-	} else {
-		while(tmp->next != NULL) {
-			tmp = tmp->next;
-		}
-		new = nouvelElement();
-		tmp->next = new;
-		new->prev = tmp;
-	}
-}
-
 char menu() {
 	printf("Menu : \n");
 	printf("1 : Ajouter en tete de liste\n");
@@ -163,7 +136,8 @@ char menu() {
 	printf("3 : Supprimer en tete de liste\n");
 	printf("4 : Supprimer en fin de liste\n");
 	printf("5 : Afficher la liste\n");
-	printf("6 : Inserer en fin de liste\n");
+	printf("6 : Inserer en debut de liste\n");
+	printf("7 : Inserer en fin de liste\n");
 	printf("0 : Quitter\n");
 	printf("Choix : ");
 	return getche();
