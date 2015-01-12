@@ -12,30 +12,32 @@
 #include <conio.h>
 #include <ctype.h>
 
-short * supprimeNeg(short *v);
+int supprimeNeg(short **v, short taille);
 
 int main(int argc, char **argv) {
 
 	short *v, n = 2, i;
-	if((v = (short *) calloc(5,sizeof(short)))) {
-		for(i = 0; i < 5; i++) {
+	short newTaille, taille = 5;
+	if((v = (short *) calloc(taille,sizeof(short)))) {
+		for(i = 0; i < taille; i++) {
 			*(v+i) = n;
 			n = (n*-1) * 2;
 		}
 	}
-	for(i = 0; i < 5; i++) {
+	for(i = 0; i < taille; i++) {
 		printf("%d\n",*(v+i));
 	}
-	v = supprimeNeg(v);
-	for(i = 0; i < 5; i++) {
+	newTaille = supprimeNeg(&v,taille);
+	printf("newTaille : %d\n",newTaille);
+	for(i = 0; i < newTaille; i++) {
 		printf("%d\n",*(v+i));
 	}
 	return 0;
 }
 
-short * supprimeNeg(short * v) {
-	short *vreturn = NULL, i, cpt = 0;
-	for(i = 0; i < 5; i++) {
+int supprimeNeg(short **vect, short taille) {
+	short *vreturn = NULL, i, cpt = 0, *v = *vect;
+	for(i = 0; i < taille; i++) {
 		if(*(v+i) >= 0) {
 			if(vreturn == NULL) {
 				vreturn = (short *) malloc(sizeof(short));
@@ -49,5 +51,6 @@ short * supprimeNeg(short * v) {
 
 		}
 	}
-	return vreturn;
+	*vect = vreturn;
+	return ((cpt < taille) ? cpt:taille);
 }

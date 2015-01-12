@@ -28,7 +28,7 @@ void afficherListe(struct liste *pliste);
 char menu();
  
 int main(int argc, char **argv) {
-	struct liste *liste = NULL;
+	struct liste *liste = NULL, *tmp, *suiv;
 	char c;
 
 	while((c = menu()) != '0') {
@@ -53,7 +53,14 @@ int main(int argc, char **argv) {
 				printf("Mauvaise option!\n");
 		}
 	}
-	free(liste);
+	/*destruction*/
+	suiv = liste;
+	while(suiv) {
+		tmp = suiv;
+		suiv = suiv->next;
+		free(tmp);
+	}
+	liste = NULL;
 	return 0;
 }
 

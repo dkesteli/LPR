@@ -1,5 +1,5 @@
 /*
-	pgm : liste_double.c
+	pgm : liste_double_void_v2.c
 	author : Denis Kestelier
 */
 
@@ -28,7 +28,7 @@ void supprimerEnFin(struct liste **debut, struct liste **fin);
 char menu();
 
 int main(int argc, char **argv) {
-	struct liste **debut = NULL, **fin = NULL;
+	struct liste **debut = NULL, **fin = NULL, *tmp, *suiv;
 	char c;
 	debut = malloc(sizeof(struct liste));
 	*debut = NULL;
@@ -56,6 +56,14 @@ int main(int argc, char **argv) {
 				printf("Mauvaise option!\n");
 		}
 	}
+	/*destruction*/
+	suiv = *debut;
+	while(suiv) {
+		tmp = suiv;
+		suiv = suiv->next;
+		free(tmp);
+	}
+	*debut = NULL;
 	return 0;
 }
 struct liste *nouvelElement() {

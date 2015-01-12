@@ -19,19 +19,19 @@ struct liste{
 	struct liste *next;
 };
 
-void main(int argc, char **argv) {
+int main(int argc, char **argv) {
 
 	struct liste *debut = NULL, *tmp = NULL;
 	int i;
 
-	struct liste* nouvelElement = malloc(sizeof(struct liste));
+	struct liste* nouvelElement =(struct liste*) malloc(sizeof(struct liste));
 	nouvelElement->next = NULL;
 	nouvelElement->composante.num = 1;
 	strcpy(nouvelElement->composante.mot,"MOT 1");
 	debut = nouvelElement;
 	tmp = debut;
 	for(i = 2; i <= 6; i++) {
-		nouvelElement = malloc(sizeof(struct liste));
+		nouvelElement = (struct liste*) malloc(sizeof(struct liste));
 		nouvelElement->composante.num = i;
 		sprintf(nouvelElement->composante.mot,"MOT %d",i);
 		nouvelElement->next = NULL;
@@ -48,5 +48,7 @@ void main(int argc, char **argv) {
 		free(tmp);
 		tmp = debut;
 	}
+	debut = NULL;
+	return 0;
 
 }

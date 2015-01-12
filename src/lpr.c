@@ -55,7 +55,7 @@ int main() {
 void equation() {
 	int a, b, c, delta;
 	float solution1, solution2;
-	printf("\Entrez 3 nombres pour une équation :");
+	printf("\nEntrez 3 nombres pour une équation :");
 	scanf("%d %d %d", &a, &b, &c);
 	if (a != 0) {
 		printf("\nEquation : %dx² + %dx + %d = 0", a,b,c);

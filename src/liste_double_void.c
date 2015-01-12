@@ -34,7 +34,7 @@ void supprimerEnFin(struct liste *pliste);
 char menu();
 
 int main(int argc, char **argv) {
-	struct liste *pliste = NULL;
+	struct liste *pliste = NULL, *tmp, *suiv;
 	char c;
 
 	pliste = malloc(sizeof(struct liste));
@@ -61,6 +61,14 @@ int main(int argc, char **argv) {
 				printf("Mauvaise option!\n");
 		}
 	}
+	/*destruction*/
+	suiv = liste;
+	while(suiv) {
+		tmp = suiv;
+		suiv = suiv->next;
+		free(tmp);
+	}
+	liste = NULL;
 	return 0;
 }
 struct elem *nouvelElement() {
