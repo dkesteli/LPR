@@ -11,3 +11,11 @@
 	- Si la chaîne est numérique, elle est ajoutée aux 2 entiers de l'enregistrement.
 	La fonction retourne des codes différents en fonction du type d'erreur et 0 si tout a marché.
 */
+
+
+int main(int argc, char **argv) {
+
+	FILE *fp;
+	
+	return 0;
+}
