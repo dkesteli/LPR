@@ -25,9 +25,7 @@ int main(int argc, char **argv) {
 
 char * moule(char **v, short pos) {
 	char *m = *(v+pos), *r = (char *) malloc(strlen(m)+1);
-	short i;
-	i = strlen(m);
-	printf("i : %d",i);
+	short i = strlen(m);
 	if(m[0] >= 'a' && m[0] <= 'z') {
 		r[0] = m[0] - 32;
 	} else {
@@ -44,5 +42,4 @@ char * moule(char **v, short pos) {
 	r[i+1] = '\0';
 	
 	return r;
-
 }

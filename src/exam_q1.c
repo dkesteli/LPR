@@ -15,23 +15,24 @@ struct retour {
 	int cpt;
 };
 
-struct retour * rechercheChar(char **v, char c);
+struct retour * rechercheChar(char **v, char c, int taille);
 
 int main(int argc, char **argv) {
 	static char *pChaine[6] = {"Alberttttttttt", "Arlette", "ttt", "turlututu chapeau tres pointu", "tttt", "rtt"};
 	struct retour *ret = NULL;
-	ret = rechercheChar(pChaine, 't');
-	printf("Occurence de %c : %d\n",'t',ret->cpt);
+	int taille = 6;
+	ret = rechercheChar(pChaine, 'u', taille);
+	printf("Occurence de %c : %d\n",'u',ret->cpt);
 	printf("adresse de la chaine : %d",*ret->chaine);
 
 }
 
-struct retour * rechercheChar(char **v, char c) {
+struct retour * rechercheChar(char **v, char c, int taille) {
 	int i, j, tmpCpt;
 	struct retour *retour = malloc(sizeof(struct retour));
 	retour->cpt = 0;
 	retour->chaine = NULL;
-	for(i = 0; i < 4; i++) {
+	for(i = 0; i < taille; i++) {
 		j = 0;
 		tmpCpt = 0;
 		while(*(*(v+i)+j) != '\0') {
