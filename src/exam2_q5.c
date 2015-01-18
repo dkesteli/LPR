@@ -7,3 +7,12 @@
 	Utiliser une fonction qui reçoit une ligne de la matrice et renvoie le vecteur fabriqué pour cette ligne.
 	Note : 2 fonctions : une pour créer le vecteur et une pour créer les sommes.
 */
+
+#include "stdio.h"
+#include "stdlib.h"
+#include "string.h"
+
+int main(int argc, char **argv) {
+
+	return 0;
+}

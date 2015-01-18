@@ -15,30 +15,46 @@
 
 struct element {
 	short nombre;
-	char mot[25];
+	char mot[5];
 	struct element *suiv;
 };
 
-void addFromL2ToL1(struct element *l1, struct element *l2);
+void addFromL2ToL1(struct element **l1, struct element **l2);
 
 int main(int argc, char **argv) {
-	struct element *l1 = NULL, *l2 = NULL;
+	struct element *l1 = NULL, *l2 = NULL, *tmp;
 	l1 = (struct element *) malloc(sizeof(struct element));
 	l2 = (struct element *) malloc(sizeof(struct element));
+	l1->nombre = 1;
+	strcpy(l1->mot,"Hello");
+	l1->suiv = NULL;
+	l2->nombre = 4;
+	strcpy(l2->mot," Denis");
+	l2->suiv = NULL;
+	addFromL2ToL1(&l1,&l2);
+	tmp = l1;
+	while(tmp) {
+		printf("\n%d %s",tmp->nombre,tmp->mot);
+		tmp = tmp->suiv;
+	}
+	tmp = l2;
+	while(tmp) {
+		printf("\n%d %s",tmp->nombre,tmp->mot);
+		tmp = tmp->suiv;
+	}
 
 	return 0;
 }
 
-void addFromL2ToL1(struct element *l1, struct element *l2) {
-	struct element *tmp = l2;
-	tmp = l2;
-	if((strlen(l2->mot) + strlen(l1->mot)) < 25) {
-		strcat(l1->mot,l2->mot);
+void addFromL2ToL1(struct element **l1, struct element **l2) {
+	struct element *tmp = *l2;
+	if((strlen((*l2)->mot) + strlen((*l1)->mot)) < 5) {
+		strcat((*l1)->mot,(*l2)->mot);
 	} else {
-		strcpy(l1->mot,l2->mot);
+		strcpy((*l1)->mot,(*l2)->mot);
 	}
-	l1->nombre += l2->nombre;
-	l2 = tmp->suiv;
+	(*l1)->nombre += (*l2)->nombre;
+	(*l2) = tmp->suiv;
 	free(tmp);
 
 }
